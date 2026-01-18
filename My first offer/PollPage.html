@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Опрос</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/pollpage_elements.css">
+        <link rel="stylesheet" href="/styles/pollpage_buttons.css">
+        <link rel="stylesheet" href="/styles/pollpage_animations.css">
+        <link rel="icon" type="image/x-icon" href="/thumbnails/pollpage.svg">
+    </head>
+    <body>
+        <div redir="/Home.html" class="back_button buttons redirB"><img class="homeIcon" src="/thumbnails/homeIcon.svg"></div>
+        <div class="main">
+            <div class="SignFrame">
+                <input type="text" maxlength="25" class="FirstName" placeholder="Имя">
+                <input type="text" maxlength="25" class="SecondName" placeholder="Фамилия">
+                <input type="number" min="9" max="11" class="Class" placeholder="Класс">
+                <div class="Alerts"></div>
+            </div>
+            <div class="start_button buttons">Начать</div>
+        </div>
+        <script type="module" src="/js/polls.js"></script>
+    </body>
+</html>

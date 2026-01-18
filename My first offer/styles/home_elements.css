@@ -1,0 +1,97 @@
+body{
+    background-image: linear-gradient(to left bottom, #140537, #004188, #007eb4, #00b99f, #0eee52);
+    margin: 0;
+    height: 927px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 90%;
+    position: relative;
+    margin: 30px;
+    gap: 10px;
+}
+
+.textHolder{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Professions{
+    font-size: 200%;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 450;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 15px;
+    gap: 10px;
+    background-color: rgb(219, 219, 198);
+    border-radius: 5px;
+    justify-content: start;
+    align-items: center;
+}
+
+.profession{
+    user-select: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    text-align: start;
+    padding: 10px 5px;
+    background-color: beige;
+    border-radius: 5px;
+    transition: all 0.15s;
+}
+
+.profession:hover{
+    filter: brightness(0.95);
+    padding: 11px 6px;
+}
+
+.profession:active{
+    filter: brightness(0.925);
+    padding: 9px 4px;
+}
+
+.tri{
+    width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 50px solid #555;
+	border-bottom: 25px solid transparent;
+    transform: scale(0.5);
+    margin: 5px;
+}
+
+.irt{
+    rotate: -90deg;
+}
+
+.info{
+    width: 100%;
+    font-size: 80%;
+    line-break:normal;
+    transition: all 0.3s;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 800px) {
+    body{
+        height: 800px;
+    }
+}

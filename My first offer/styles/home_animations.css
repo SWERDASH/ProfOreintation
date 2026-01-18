@@ -1,0 +1,27 @@
+.info{
+    animation: info 0.3s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes info {
+    0%{
+        opacity: 0;
+        transform: scaleY(0);
+        font-size: 0px;
+    }
+}
+
+.infoBack{
+    animation: infob 0.2s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes infob {
+    100%{
+        opacity: 0;
+        transform: scaleY(0);
+        font-size: 0px;
+    }
+}
