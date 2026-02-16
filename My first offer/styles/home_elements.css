@@ -1,10 +1,12 @@
 body{
-    background-image: linear-gradient(to left bottom, #140537, #004188, #007eb4, #00b99f, #0eee52);
     margin: 0;
-    height: 927px;
+    padding: 0;
+    height: 100dvh;
+    background-image: linear-gradient(to left, #0eee52 -50%, #140537 50%, #0eee52 150%);
     display: flex;
-    align-items: start;
-    justify-content: center;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
 }
 
 .main{
@@ -20,9 +22,14 @@ body{
 
 .textHolder{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 140%;
+    margin-top: -15px;
 }
 
 .Professions{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
     font-size: 200%;
     font-family: "Montserrat Alternates", sans-serif;
     font-weight: 450;
@@ -78,6 +85,7 @@ body{
     width: 100%;
     font-size: 80%;
     line-break:normal;
+    white-space: pre-wrap;
     transition: all 0.3s;
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -91,7 +99,17 @@ body{
 }
 
 @media (max-width: 800px) {
-    body{
-        height: 800px;
+    .profBox{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 80%;
+        position: relative;
+    }
+    .profession{
+        padding: 5px 2.5px;
+    }
+    .tri{
+        transform: scale(0.3);
     }
 }

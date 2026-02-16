@@ -1,0 +1,99 @@
+.CompareTable{
+    border-radius: 20px;
+    display: flex;
+    width: 75dvw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50dvh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: beige;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.chooseProfFrame{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100%;
+    height: 10%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.profOption{
+    background-color: rgb(241, 241, 191);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.chosed,.profOption:active{
+    background-color: beige;
+    border: solid black 1px;
+    border-bottom: none;
+}
+
+.profOption:hover{
+    filter: brightness(0.96);
+}
+
+#profOption0{
+    border-radius: 20px 0px 0px 0px;
+}
+#profOption1, #profOption2{
+    border-radius: 0px;
+}
+#profOption3{
+    border-radius: 0px 20px 0px 0px;
+}
+
+.infoTable{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+.infoTable div{
+    background-color: beige;
+    border: solid black 1px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    font-size: 88%;
+    padding: 5px;
+    justify-content: center;
+}
+
+.Table{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    scrollbar-width: auto;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.Table::-webkit-scrollbar{
+    display: none;
+}
+
+.header{
+    height: 50px;
+}
+
+.header div{
+    padding: 0px;
+    width: auto;
+}

@@ -1,51 +1,9 @@
-.start_button{
-    background-color: beige;
-    display: inline;
-    font-size: 200%;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.buttons{
-    border-radius: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    padding: 5px 20px;
-    background-color: beige;
-    cursor: pointer;
-    position: relative;
-    user-select: none;
-    transition: all 0.15s;
-}
-
-.buttons:hover{
-    padding: 6px 21px;
-}
-
-.buttons:active{
-    padding: 4px 19px;
-    opacity: 0.9;
-}
-
 .NextButton{
     border-radius: 5px;
     background-color: azure;
     border: solid black 1px;
     margin: -10px;
-}
-
-.back_button{
-    width: 30px;
-    height: 30px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    align-self: self-start;
-    margin: 10px;
-}
-
-.back_button:hover{
-    padding: 11px;
+    box-shadow: none;
 }
 
 @media (max-width: 800px) {

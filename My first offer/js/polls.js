@@ -1,3 +1,4 @@
+
 if (document.querySelector('.buttons')){
     if(document.querySelector('.redirB')){
         document.querySelectorAll('.redirB').forEach((button) => {
@@ -10,7 +11,7 @@ if (document.querySelector('.buttons')){
         if(document.querySelector('.FirstName').value != ''
         && document.querySelector('.SecondName').value != ''
         && (document.querySelector('.Class').value != '' && document.querySelector('.Class').value >= 9)){
-            startPoll()
+            startPoll(document.querySelector('.FirstName').value, document.querySelector('.SecondName').value, document.querySelector('.Class').value)
         }
         else{
             if (document.querySelector('.Class').value < 9){
@@ -39,17 +40,28 @@ function Alerts(message){
     }
 }
 
-function startPoll(){
+function startPoll(name, sname, clas){
     document.querySelector('.main').innerHTML = ''
     var PollFrame = document.createElement("DIV")
     PollFrame.classList.add("PollFrame")
     document.querySelector('.main').append(PollFrame)
-    var user = []
-    poll.forEach((question) => {
-        user.push({
-            num:question.num,
-            answer: 0,
-            index: -1
+    var answ = []
+    poll[0].answers.forEach((ans, i) => {
+        answ.push({
+            name: ans,
+            value: 0
+        })
+    })
+    var user = {
+        name: name,
+        sname: sname,
+        class: clas,
+        que: [],
+        total: answ
+    }
+    poll.forEach((q, index) => {
+        user.que.push({
+            answer: -1,
         })
     })
     questioner(0, user)
@@ -59,22 +71,22 @@ var poll = [
     {
         num: 1,
         question: "Вопрос 1",
-        answers:["Английский", "Русский язык", "Литература", "Математика", "Физика"]
+        answers:["Сфера обслуживания", "Естествознание", "Гуманитарии", "Информатика"]
     },
     {
         num: 2,
         question: "Вопрос 2",
-        answers:["Английский", "Русский язык", "Литература", "Математика", "Физика"]
+        answers:["Сфера обслуживания", "Естествознание", "Гуманитарии", "Информатика"]
     },
     {
         num: 3,
         question: "Вопрос 3",
-        answers:["Английский", "Русский язык", "Литература", "Математика", "Физика"]
+        answers:["Сфера обслуживания", "Естествознание", "Гуманитарии", "Информатика"]
     },
     {
         num: 4,
         question: "Вопрос 4",
-        answers:["Английский", "Русский язык", "Литература", "Математика", "Физика"]
+        answers:["Сфера обслуживания", "Естествознание", "Гуманитарии", "Информатика"]
     }
 ]
 
@@ -112,8 +124,7 @@ function questioner(number, user){
                     })
                     answer.setAttribute("chosed", 1)
                     answer.classList.add('chosed')
-                    user[number].answer = polling.answers[index]
-                    user[number].index = index
+                    user.que[number].answer = index
                     if (document.querySelector('.Alerts').innerHTML != ''){
                         document.querySelector('.Alerts').innerHTML = ''
                     }
@@ -121,14 +132,14 @@ function questioner(number, user){
                 else{
                     answer.setAttribute("chosed", 0)
                     answer.classList.remove('chosed')
-                    user[number].answer = 0
-                    user[number].index = -1
+                    user.que[number].answer = -1
                 }
             })
         })
 
         document.querySelector('.NextButton').addEventListener('click', ()=>{
-            if(user[number].index != -1){
+            if(user.que[number].answer != -1){
+                user.total[user.que[number].answer].value += 1
                 questioner(number+1, user)
             }
             else{
@@ -138,37 +149,11 @@ function questioner(number, user){
     }
     else{
         var as = ``
-        var sum = 0
-        user.forEach((a, index) => {
-            as += `<div class="results" id="result${index}">Вопрос: ${a.num}, Ответ: ${a.answer}, Индекс ответа: ${a.index}</div>`
-            sum += a.index
+        user.total.forEach((v, i) => {
+            as += `<div class="results">${v.name}: ${v.value}</div>`
         })
-        document.querySelector('.PollFrame').innerHTML = as + `<div class="results">Результат: ${calculate(sum)}</div>`
+        document.querySelector('.PollFrame').innerHTML = as
         document.querySelector('.main').innerHTML += `<div class="start_button buttons">Ещё раз</div>`
         document.querySelector('.start_button').addEventListener('click', () => {startPoll()})
-    }
-}
-
-function calculate(sum){
-    if (sum >= 2){
-        if (sum >= 9){
-            if (sum >= 13){
-                if (sum >= 14){
-                    return "ФизМат"
-                }
-                else{
-                    return "Робототехника"
-                }
-            }
-            else{
-                return "Инженерия"
-            }
-        }
-        else{
-            return "Лингвистика"
-        }
-    }
-    else{
-        return "Филология"
     }
 }

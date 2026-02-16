@@ -1,9 +1,10 @@
 body{
-    background-image: linear-gradient(to left bottom, #140537, #004188, #007eb4, #00b99f, #0eee52);
+    background-image: linear-gradient(to left, #0eee52 -100%, #140537 50%, #0eee52 200%);
+    height: 100dvh;
     margin: 0;
-    height: 927px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     justify-content: center;
 }
 
@@ -14,11 +15,10 @@ body{
 .main{
     display: flex;
     align-items: center;
+    align-self: center;
     justify-content:center;
     position: relative;
     flex-direction: column;
-    width: 100%;
-    height: 100px;
     gap: 10px;
 }
 
@@ -56,6 +56,9 @@ input:focus{
     height: 150px;
     justify-content: start;
     gap: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
 }
 
 .PollFrame{
@@ -68,8 +71,10 @@ input:focus{
     justify-content: start;
     align-items: center;
     width: 500px;
-    height: 475px;
     gap: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
 }
 
 .answers{
@@ -101,6 +106,7 @@ input:focus{
     background-color: rgb(235, 255, 179);
     margin: -6px;
     padding: 6px;
+    font-size: 120%;
 }
 
 .answerBody:active{
@@ -143,6 +149,13 @@ input:focus{
     }
     .answers{
         width: 80%;
+    }
+    .answerBody{
+        font-size: 90%;
+        padding: 10px;
+    }
+    .meme{
+        margin: 5px;
     }
     @media (max-height:800px) {
         body{
