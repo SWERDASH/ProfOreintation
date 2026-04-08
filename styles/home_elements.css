@@ -1,0 +1,132 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    background-image: linear-gradient(to left, #0eee52 -50%, #140537 50%, #0eee52 150%);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo{
+    width: 12.5dvw;
+    filter: drop-shadow(rgb(150, 111, 4) 0 0 5px);
+    transition: 0.15s all;
+}
+
+.logo:hover{
+    filter: drop-shadow(rgb(150, 111, 4) 0 0 7.5px);
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 90%;
+    position: relative;
+    margin: 30px;
+    user-select: none;
+    gap: 10px;
+}
+
+.textHolder{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3.5dvw;
+    margin-top: -15px;
+    color: aliceblue;
+    filter: drop-shadow(rgb(116, 119, 122) 0 0 5px);
+}
+
+.Professions{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    font-size: 200%;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 450;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 15px;
+    gap: 10px;
+    background-color: rgb(219, 219, 198);
+    border-radius: 5px;
+    justify-content: start;
+    align-items: center;
+}
+
+.profession{
+    user-select: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    text-align: start;
+    padding: 10px 5px;
+    background-color: beige;
+    border-radius: 5px;
+    transition: all 0.15s;
+}
+
+.profession:hover{
+    filter: brightness(0.95);
+    padding: 11px 6px;
+}
+
+.profession:active{
+    filter: brightness(0.925);
+    padding: 9px 4px;
+}
+
+.tri{
+    width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 50px solid #555;
+	border-bottom: 25px solid transparent;
+    transform: scale(0.5);
+    margin: 5px;
+}
+
+.irt{
+    rotate: -90deg;
+}
+
+.info{
+    width: 100%;
+    font-size: 80%;
+    line-break:normal;
+    white-space: pre-wrap;
+    transition: all 0.3s;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 800px) {
+    .profBox{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 80%;
+        position: relative;
+    }
+    .profession{
+        padding: 5px 2.5px;
+    }
+    .tri{
+        transform: scale(0.3);
+    }
+    .textHolder{
+        font-size: 120%;
+        text-align: center;
+    }
+}

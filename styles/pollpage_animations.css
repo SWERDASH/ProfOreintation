@@ -1,0 +1,15 @@
+.answerBody{
+    animation: app 0.35s ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.01s;
+}
+
+@keyframes app {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0);
+    }
+}

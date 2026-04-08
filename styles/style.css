@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    background-image: linear-gradient(to left, #0eee52 -50%, #140537 50%, #0eee52 150%);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homeIcon{
+    width: 100px;
+}
+
+.start_button{
+    background-color: beige;
+    display: inline;
+    font-size: 200%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.buttons{
+    border-radius: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 5px 20px;
+    background-color: beige;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    transition: all 0.15s;
+}
+
+.buttons:hover{
+    padding: 6px 21px;
+}
+
+.buttons:active{
+    padding: 4px 19px;
+    opacity: 0.9;
+}
+
+.back_button{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    align-self: center;
+    margin: 10px;
+}
+
+.back_button:hover{
+    padding: 11px;
+}

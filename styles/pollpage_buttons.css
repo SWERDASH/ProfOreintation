@@ -1,0 +1,13 @@
+.NextButton{
+    border-radius: 5px;
+    background-color: azure;
+    border: solid black 1px;
+    margin: -10px;
+    box-shadow: none;
+}
+
+@media (max-width: 800px) {
+    .NextButton{
+        font-size: 150%;
+    }
+}
