@@ -145,7 +145,7 @@ input:focus{
         height: 800px;
     }
     .PollFrame{
-        width: 80%;
+        width: 80dvw;
     }
     .answers{
         width: 80%;
