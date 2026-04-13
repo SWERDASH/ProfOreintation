@@ -78,7 +78,8 @@ input:focus{
 }
 
 .answers{
-    display: flex;
+    display: grid;
+    grid-template-rows: 0fr 0fr 0fr;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
