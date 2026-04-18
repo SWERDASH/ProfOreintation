@@ -202,6 +202,6 @@ function questioner(number, user){
         document.querySelector('.main').innerHTML += `<div class="read_more buttons">Узнать больше</div>`
         document.querySelector('.main').innerHTML += `<div class="start_button buttons">Ещё раз</div>`
         document.querySelector('.start_button').addEventListener('click', () => {startPoll()})
-        document.querySelector('.read_more').addEventListener('click', () => {open("/ProfOreintation/ComparsionPage.html")})
+        document.querySelector('.read_more').addEventListener('click', () => {open("/ProfOreintation/ComparsionPage.html", "_top")})
     }
 }

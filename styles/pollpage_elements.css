@@ -146,6 +146,10 @@ input:focus{
     align-self: self-end;
 }
 
+.read_more{
+    font-size: 20px;
+}
+
 .meme{
     width:50px; 
     margin-left:5px
