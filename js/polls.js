@@ -199,7 +199,9 @@ function questioner(number, user){
             as = `<div class="results">Сфера обслуживания</div>`
         }
         document.querySelector('.PollFrame').innerHTML = as + "<div class='recommendation'>Тебе стоит почитать про это направление профессий, чтобы определить, точно ли это твоё призвание.</div>"
+        document.querySelector('.main').innerHTML += `<div class="read_more buttons">Узнать больше</div>`
         document.querySelector('.main').innerHTML += `<div class="start_button buttons">Ещё раз</div>`
         document.querySelector('.start_button').addEventListener('click', () => {startPoll()})
+        document.querySelector('.read_more').addEventListener('click', () => {open("/ProfOreintation/ComparsionPage.html")})
     }
 }
