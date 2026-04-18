@@ -120,10 +120,21 @@ input:focus{
     border-color: salmon;
 }
 
+.recommendation{
+    font-size: 20px;
+    text-align: center;
+}
+
+.results{
+    font-size: 30px;
+}
+
 .Question{
-    font-size: large;
     align-self: baseline;
     position: relative;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
 }
 
 .Counter{
