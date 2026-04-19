@@ -40,7 +40,7 @@ function Alerts(message){
     }
 }
 var id1 = ["Физика", "Биология", "Химия", "География", "История"]
-var id2 = ["Информатика",  "Математика"]
+var id2 = ["Информатика",  "Математика", "Математика (профильная)"]
 var id3 = ["Обществознание", "История"]
 var id4 = ["Литература", "Русский язык", "Английский язык"]
 function checkID(ans){
@@ -64,6 +64,7 @@ function startPoll(name, sname, clas){
     PollFrame.classList.add("PollFrame")
     document.querySelector('.main').append(PollFrame)
     var answ = []
+    poll[0].answers.push("Математика (профильная)", "Математика (базовая)")
     poll[0].answers.forEach((ans, i) => {
         answ.push({
             name: ans,
@@ -82,6 +83,8 @@ function startPoll(name, sname, clas){
             answer: -1,
         })
     })
+    poll[0].answers.pop()
+    poll[0].answers.pop()
     questioner(0, user)
 }
 
@@ -105,11 +108,17 @@ var poll = [
         num: 4,
         question: "На каких уроках выполнять практические работы вам интереснее всего?",
         answers:["Обществознание", "Физика", "Литература", "Информатика",  "Русский язык", "Английский язык", "История", "Биология", "Химия", "География", "Математика"]
+    },
+    {
+        num: 5,
+        question: "Какие предметы вы планируете сдавать на",
+        answers:["Обществознание", "Физика", "Литература", "Информатика", "Русский язык", "Английский язык", "История", "Биология", "Химия", "География", "Математика"],
     }
 ]
 
 function questioner(number, user){
     if (number+1 <= poll.length){
+        var b = []
         var polling = poll[number]
         var ur = ['https://cdn.7tv.app/emote/01GQFT1WF80002Q9KS8SKQMHHY/4x.gif',
             'https://cdn.7tv.app/emote/01GWSGBQ7R0008X0SB6ANMACKG/4x.gif',
@@ -123,11 +132,19 @@ function questioner(number, user){
             'https://cdn.7tv.app/emote/01H05KSN50000FYS5SC9CHDQJ3/4x.png',]
         document.querySelector('.PollFrame').innerHTML = ''
         var answersObj = ''
-        polling.answers.forEach((ans, indx) => {
-            answersObj += `<div style="transform: translate(0px, ${10*(indx+1)}px);" class="answerBody" id="answer${indx}">${ans} <img class="meme" src="${ur[Math.floor(Math.random() * 9)]}"></div>`
-        })
+        if (classCheck(polling.num, user.class)[0]){
+            polling.answers.forEach((ans, indx) => {
+                answersObj += `<div style="transform: translate(0px, ${10*(indx+1)}px);" class="answerBody" id="answer${indx}">${ans} <img class="meme" src="${ur[Math.floor(Math.random() * 9)]}"></div>`
+            })
+        }
+        else{
+            if (!polling.answers.includes("Математика (профильная)")){polling.answers.pop(); polling.answers.push("Математика (профильная)", "Математика (базовая)")}
+            polling.answers.forEach((ans, indx) => {
+                answersObj += `<div style="transform: translate(0px, ${10*(indx+1)}px);" class="answerBody" id="answer${indx}">${ans} <img class="meme" src="${ur[Math.floor(Math.random() * 9)]}"></div>`
+            })
+        }
         document.querySelector('.PollFrame').innerHTML = `
-        <div class="Question">${polling.question}</div>
+        <div class="Question">${polling.question}${classCheck(polling.num, user.class)[1]}</div>
         <div class="answers">${answersObj}</div>
         <div class="Counter">${polling.num}/${poll.length}</div>
         <div class="Alerts"></div>
@@ -137,27 +154,58 @@ function questioner(number, user){
             answer.addEventListener('click', () => {
                 if (answer.getAttribute("chosed") != 1){
                     polling.answers.forEach((an, is) => {
-                        document.getElementById(`answer${is}`).setAttribute("chosed", 0)
-                        document.getElementById(`answer${is}`).classList.remove('chosed')
+                        if (polling.num != 5){
+                            document.getElementById(`answer${is}`).setAttribute("chosed", 0)
+                            document.getElementById(`answer${is}`).classList.remove('chosed')
+                        }
                     })
-                    answer.setAttribute("chosed", 1)
-                    answer.classList.add('chosed')
-                    user.que[number].answer = index
+                    console.log(user.que)
+                    if (answer.getAttribute("chosed") != 1){
+                        answer.setAttribute("chosed", 1)
+                        answer.classList.add('chosed')
+                    }
+                    else{
+                        answer.setAttribute("chosed", 0)
+                    }
+                    if (polling.num != 5){
+                        user.que[number].answer = index
+                    }else{
+                        b.push(index)
+                        user.que[number].answer = b
+                    }
                     if (document.querySelector('.Alerts').innerHTML != ''){
                         document.querySelector('.Alerts').innerHTML = ''
                     }
                 }
                 else{
-                    answer.setAttribute("chosed", 0)
+                    if (polling.num == 5){
+                        if (answer.getAttribute("chosed") != 1){
+                            answer.setAttribute("chosed", 1)
+                            answer.classList.add('chosed')
+                        }
+                        else{
+                            answer.setAttribute("chosed", 0)
+                        }
+                        b.splice(b.indexOf(index), 1)
+                        user.que[number].answer = b
+                    }else{
+                        answer.setAttribute("chosed", 0)
+                        user.que[number].answer = -1
+                    }
                     answer.classList.remove('chosed')
-                    user.que[number].answer = -1
                 }
             })
         })
 
         document.querySelector('.NextButton').addEventListener('click', ()=>{
             if(user.que[number].answer != -1){
-                user.total[user.que[number].answer].value += 1
+                if (polling.num != 5){
+                    user.total[user.que[number].answer].value += 1
+                }else{
+                    user.que[4].answer.forEach((a, i) => {
+                        user.total[a].value += 1
+                    })
+                }
                 questioner(number+1, user)
             }
             else{
@@ -199,9 +247,20 @@ function questioner(number, user){
             as = `<div class="results">Сфера обслуживания</div>`
         }
         document.querySelector('.PollFrame').innerHTML = as + "<div class='recommendation'>Тебе стоит почитать про это направление профессий, чтобы определить, точно ли это твоё призвание.</div>"
-        document.querySelector('.main').innerHTML += `<div class="read_more buttons">Узнать больше</div>`
         document.querySelector('.main').innerHTML += `<div class="start_button buttons">Ещё раз</div>`
-        document.querySelector('.start_button').addEventListener('click', () => {startPoll()})
-        document.querySelector('.read_more').addEventListener('click', () => {open("/ProfOreintation/ComparsionPage.html", "_top")})
+        document.querySelector('.start_button').addEventListener('click', () => {startPoll(user.name, user.sname, user.class)})
+    }
+}
+
+function classCheck(num, classNum){
+    if (num != 5){
+        return [true, ""]
+    }
+    else{
+        if (parseInt(classNum) < 10){
+            return [true, " ОГЭ?"]
+        }else{
+            return [false, " ЕГЭ?"]
+        }
     }
 }
